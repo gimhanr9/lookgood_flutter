@@ -27,6 +27,11 @@ class Home extends StatelessWidget {
           onPressed: () {},
 
         ),
+        IconButton(
+          icon:Icon(Icons.shopping_cart,color: Colors.black,),
+          onPressed: () {},
+
+        ),
 
         IconButton(
           icon:Icon(Icons.logout,color: Colors.black,),
