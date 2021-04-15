@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:lookgood_flutter/screens/product_body.dart';
 
 class Products extends StatelessWidget {
+  final String category;
+
+  Products({Key key, @required this.category}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
       appBar: buildAppBar(),
+      body:ProductBody(),
     );
 
   }
@@ -22,6 +28,7 @@ class Products extends StatelessWidget {
           onPressed: () {},
 
         ),
+        SizedBox(width: 20.0 / 2)
 
 
       ],

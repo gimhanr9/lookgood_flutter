@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 
 
 
-class MensCategories extends StatefulWidget {
+class KidsCategories extends StatefulWidget {
   @override
   _CategoriesState createState() => _CategoriesState();
 }
 
-class _CategoriesState extends State<MensCategories> {
-  List<String> categories = ["Tops", "Bottoms"];
+class _CategoriesState extends State<KidsCategories> {
+  List<String> categories = ["Boys Tops", "Girls Tops", "Boys Bottoms", "Girls Bottoms"];
 
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,7 +43,8 @@ class _CategoriesState extends State<MensCategories> {
               categories[index],
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: selectedIndex == index ? Color(0xFF535353) : Color(0xFFACACAC),
+                color: selectedIndex == index ? Color(0xFF535353) : Color(
+                    0xFFACACAC),
               ),
             ),
             Container(
