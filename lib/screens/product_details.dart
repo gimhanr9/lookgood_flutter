@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lookgood_flutter/components/carousel_list.dart';
+import 'package:lookgood_flutter/components/cart_counter.dart';
 
 
 
@@ -42,7 +43,7 @@ class ProductDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Spacer(),
-                    Container(
+                    /*Container(
                       height: 50,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
@@ -66,10 +67,10 @@ class ProductDetails extends StatelessWidget {
                         },
                       ),
                     ),
-                    Spacer(),
+                    Spacer(),*/
                     Text(
                       "${products[id].title}",
-                      style: Theme.of(context).textTheme.display1.copyWith(
+                      style: Theme.of(context).textTheme.headline4.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
@@ -78,42 +79,46 @@ class ProductDetails extends StatelessWidget {
                     Spacer(),
                     Text(
                       "Color:",
-                      style: Theme.of(context).textTheme.headline.copyWith(
+                      style: Theme.of(context).textTheme.headline5.copyWith(
                         color: Colors.black,
                       ),
                     ),
                     Container(
-                      height: 25,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: products[id].colors.length,
-                        itemBuilder: (ctx, i) {
-                          return Container(
-                            width: 75,
-                            margin:
-                            const EdgeInsets.symmetric(horizontal: 15.0),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15.0),
-                                color: products[id].colors[i],
-                                border: Border.all(
-                                    color: Colors.white, width: 5.0)),
-                          );
-                        },
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      child: Text(
+                        product.description,
+                        style: TextStyle(height: 1.5),
                       ),
                     ),
+
                     Spacer(),
-                    Text(
-                      "Size:",
-                      style: Theme.of(context).textTheme.headline.copyWith(
-                        color: Colors.black,
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 7.5),
-                      height: 35,
-                      child: SizeSelector(id: id),
-                    ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      CartCounter(),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        height: 32,
+                        width: 32,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFF6464),
+                          shape: BoxShape.circle,
+                        ),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.favorite_border,
+
+                          ),
+                          onPressed: () {},
+                        ),
+                      )
+                    ],
+                  ),
+
                     Spacer(),
+
+
                   ],
                 ),
               ),

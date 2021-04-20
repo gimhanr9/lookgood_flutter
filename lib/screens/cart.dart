@@ -10,7 +10,7 @@ class Cart extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "Bag",
+            "Cart",
             style: Theme.of(context)
                 .textTheme
                 .headline4
