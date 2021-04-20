@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lookgood_flutter/components/categories/kids_categories.dart';
 import 'package:lookgood_flutter/components/categories/mens_categories.dart';
 import 'package:lookgood_flutter/components/categories/womens_categories.dart';
+import 'package:lookgood_flutter/screens/product_details.dart';
 
 
 
@@ -18,7 +19,7 @@ class ProductBody extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Text(
-            "Women",
+            category=="Men" ? "Men" : category=="Women" ? "Women" : "Kids",
             style: Theme.of(context)
                 .textTheme
                 .headline5
@@ -26,7 +27,7 @@ class ProductBody extends StatelessWidget {
           ),
         ),
 
-          getCategory(category),
+          category=="Men" ? MensCategories() : category=="Women" ? WomensCategories() : KidsCategories(),
 
 
         Expanded(
@@ -45,7 +46,7 @@ class ProductBody extends StatelessWidget {
                   press: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailsScreen(
+                        builder: (context) => ProductDetails(
                           product: products[index],
                         ),
                       )),
@@ -56,13 +57,5 @@ class ProductBody extends StatelessWidget {
     );
   }
 
-  void getCategory(String category){
-    if(category=="Men"){
-      MensCategories();
-    }else if(category=="Women"){
-      WomensCategories();
-    }else if(category=="Kids"){
-      KidsCategories();
-    }
-  }
+
 }

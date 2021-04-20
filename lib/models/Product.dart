@@ -20,3 +20,4 @@ class Product{
       this.xlarge,
       this.xxl});
 }
+

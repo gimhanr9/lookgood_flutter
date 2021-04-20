@@ -4,10 +4,10 @@ import 'package:lookgood_flutter/components/carousel_list.dart';
 
 
 
-class DetailsScreen extends StatelessWidget {
+class ProductDetails extends StatelessWidget {
   final int id;
 
-  const DetailsScreen({Key key, this.id}) : super(key: key);
+  const ProductDetails({Key key, this.id}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
