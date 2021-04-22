@@ -4,8 +4,8 @@ import 'package:lookgood_flutter/models/Product.dart';
 
 
 
-class AddToCart extends StatelessWidget {
-  const AddToCart({
+class BuyNow extends StatelessWidget {
+  const BuyNow({
     Key key,
     @required this.product,
   }) : super(key: key);
@@ -25,13 +25,13 @@ class AddToCart extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-                color: product.color,
+                color: Colors.black,
               ),
             ),
             child: IconButton(
               icon: SvgPicture.asset(
                 "assets/icons/add_to_cart.svg",
-                color: product.color,
+                color: Colors.white,
               ),
               onPressed: () {},
             ),
@@ -39,17 +39,20 @@ class AddToCart extends StatelessWidget {
           Expanded(
             child: SizedBox(
               height: 50,
-              child: FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18)),
-                color: product.color,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18)),
+                  primary: Colors.black,
+                ),
+
                 onPressed: () {},
                 child: Text(
                   "Buy  Now".toUpperCase(),
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ),

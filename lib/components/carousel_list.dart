@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 enum CarouselTypes { home, details }
 
-class CarouselProductsList extends StatefulWidget {
+class CarouselList extends StatefulWidget {
   final CarouselTypes type;
   final List<String> productsList;
-  const CarouselProductsList({
+  const CarouselList({
     Key key,
     @required this.type,
     @required this.productsList,
   }) : super(key: key);
   @override
-  _CarouselProductsListState createState() => _CarouselProductsListState();
+  _CarouselListState createState() => _CarouselListState();
 }
 
-class _CarouselProductsListState extends State<CarouselProductsList> {
+class _CarouselListState extends State<CarouselList> {
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
