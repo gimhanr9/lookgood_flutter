@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
+class Cart_Screen extends StatefulWidget {
+  Cart_Screen({Key key}) : super(key: key);
 
-class Cart extends StatelessWidget {
+  @override
+  Cart_ScreenState createState() {
+    return Cart_ScreenState();
+  }
+}
+
+class Cart_ScreenState extends State<Cart_Screen> {
+  final items = List<String>.generate(20, (i) => "Item ${i + 1}");
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -98,6 +108,7 @@ class Cart extends StatelessWidget {
         ],
       ),
     );
+
   }
 }
 
@@ -162,3 +173,25 @@ class _MyCounterState extends State<MyCounter> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

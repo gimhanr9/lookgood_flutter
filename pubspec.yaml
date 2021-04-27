@@ -30,6 +30,11 @@ dependencies:
   firebase_auth: "^0.20.1"
   firebase_database: "^6.0.0"
 
+  #sqflite
+  #sqflite: ^2.0.0+3
+  #path_provider: ^2.0.1
+  #intl: ^0.17.0
+
 
 
 
