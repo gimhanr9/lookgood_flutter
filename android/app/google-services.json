@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "535004444354",
+    "project_id": "flutter-lookgood-cb008385",
+    "storage_bucket": "flutter-lookgood-cb008385.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535004444354:android:80aa2a864aca2b6a12ed5b",
+        "android_client_info": {
+          "package_name": "com.cb008385.lookgood_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535004444354-f3rae86uer6ajh0ts1u3qi40nolu2fuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBafhBJpIBdG2rRCWfc1f9EzMHMJtFzjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535004444354-f3rae86uer6ajh0ts1u3qi40nolu2fuu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "535004444354-hudrfk0l137lroggbsr0j8v1fqkl65jv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cb008385.lookgoodFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:lookgood_flutter/screens/Product.dart';
+
 class Cart_Screen extends StatefulWidget {
   Cart_Screen({Key key}) : super(key: key);
 
@@ -10,6 +12,34 @@ class Cart_Screen extends StatefulWidget {
 }
 
 class Cart_ScreenState extends State<Cart_Screen> {
+  List<Product> bag = [
+    Product(
+        title: "Hand Bag",
+        price: "USD. 400.00",
+        images: [
+          'http://www.pngall.com/wp-content/uploads/4/Leather-Bag-PNG.png',
+          'https://www.stickpng.com/assets/images/580b57fbd9996e24bc43bf85.png',
+          'https://img.favpng.com/23/4/0/tote-bag-red-leather-handbag-png-favpng-ki0rQC3dTsbB0fdQT3WvmvxrU.jpg',
+        ],
+        colors: [Colors.black, Colors.red, Colors.yellow],
+        mainImage: 'http://www.pngall.com/wp-content/uploads/4/Leather-Bag-PNG.png',
+        size: [1,2,3,4,5,6,7,8,9],
+        tags: ['Product', 'Bag', 'HandBag', 'Price', 'Quality']
+    ),
+    Product(
+        title: "Adidas Superstar",
+        price: "USD. 400.00",
+        images: [
+          'http://www.miss-blog.fr/media/import/Images/adida%20superstar-896uqv.jpg',
+          'https://www.transparentpng.com/thumb/adidas-shoes/a4xO3G-adidas-shoes-adidas-shoe-kids-superstar-daddy-grade.png',
+          'https://img.favpng.com/23/4/0/tote-bag-red-leather-handbag-png-favpng-ki0rQC3dTsbB0fdQT3WvmvxrU.jpg',
+        ],
+        colors: [Colors.black, Colors.red, Colors.yellow],
+        mainImage: 'http://www.miss-blog.fr/media/import/Images/adida%20superstar-896uqv.jpg',
+        size: [1,2,3,4,5,6,7,8,9],
+        tags: ['Product', 'Shoe', 'Adidas', 'Price', 'Quality']
+    ),
+  ];
   final items = List<String>.generate(20, (i) => "Item ${i + 1}");
 
   @override
