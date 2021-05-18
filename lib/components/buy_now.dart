@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lookgood_flutter/models/Product.dart';
 
 
@@ -29,11 +28,12 @@ class BuyNow extends StatelessWidget {
               ),
             ),
             child: IconButton(
-              icon: SvgPicture.asset(
-                "assets/icons/add_to_cart.svg",
-                color: Colors.white,
+              icon: Icon(Icons.add_shopping_cart_outlined,
+                color: Colors.black,
               ),
-              onPressed: () {},
+              onPressed: () {
+
+              },
             ),
           ),
           Expanded(
@@ -43,7 +43,7 @@ class BuyNow extends StatelessWidget {
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18)),
-                  primary: Colors.black,
+                  primary: Colors.blue,
                 ),
 
                 onPressed: () {},

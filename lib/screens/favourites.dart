@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:lookgood_flutter/components/favourite_card.dart';
+import 'package:lookgood_flutter/models/Favourites.dart';
+import 'package:lookgood_flutter/utils/database_helper.dart';
 
-class MoviesPage extends StatefulWidget {
+class FavoritesPage extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() {
-    return _MoviesPageState();
+    return _FavoritesPageState();
   }
 }
 
-class _MoviesPageState extends State<MoviesPage> {
-  final List<Movie> movies = MovieList.getMovies();
+class _FavoritesPageState extends State<FavoritesPage> {
+  final databaseHelper=new DatabaseHelper();
+  final List<Favourites> favorites = [];
 
-  Widget _buildMoviesList() {
+  Widget _buildFavoritesList() {
+    databaseHelper.getFavorites().then((value){
+      favorites.addAll(value);
+
+    });
     return Container(
-      child: movies.length > 0
+      child: favorites.length > 0
           ? ListView.builder(
-        itemCount: movies.length,
+        itemCount: favorites.length,
         itemBuilder: (BuildContext context, int index) {
           return Dismissible(
             onDismissed: (DismissDirection direction) {
               setState(() {
-                movies.removeAt(index);
+                favorites.removeAt(index);
               });
             },
             secondaryBackground: Container(
@@ -32,7 +41,7 @@ class _MoviesPageState extends State<MoviesPage> {
               color: Colors.red,
             ),
             background: Container(),
-            child: MovieCard(movie: movies[index]),
+            child: FavoriteCard(favourites: favorites[index]),
             key: UniqueKey(),
             direction: DismissDirection.endToStart,
           );
@@ -44,11 +53,27 @@ class _MoviesPageState extends State<MoviesPage> {
 
   @override
   Widget build(BuildContext context) {
+    databaseHelper.getFavorites().then((value){
+      setState(() {
+        favorites.addAll(value);
+      });
+
+    });
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Movies'),
+      appBar: buildAppBar(context),
+      body: _buildFavoritesList(),
+    );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
+        onPressed: ()=> Navigator.pop(context),
+
       ),
-      body: _buildMoviesList(),
+      title: Text('Favorites'),
     );
   }
 }

@@ -4,11 +4,11 @@ enum CarouselTypes { home, details }
 
 class CarouselList extends StatefulWidget {
   final CarouselTypes type;
-  final List<String> productsList;
+  final List<String> imagesList;
   const CarouselList({
     Key key,
     @required this.type,
-    @required this.productsList,
+    @required this.imagesList,
   }) : super(key: key);
   @override
   _CarouselListState createState() => _CarouselListState();
@@ -33,7 +33,7 @@ class _CarouselListState extends State<CarouselList> {
                   _currentIndex = index;
                 });
               },
-              itemCount: widget.productsList.length,
+              itemCount: widget.imagesList.length,
               itemBuilder: (ctx, id) {
                 return Container(
                   decoration: BoxDecoration(
@@ -55,7 +55,7 @@ class _CarouselListState extends State<CarouselList> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
                     child: Image.network(
-                      "${widget.productsList[id]}",
+                      "${widget.imagesList[id]}",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -67,7 +67,7 @@ class _CarouselListState extends State<CarouselList> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-              widget.productsList.length,
+              widget.imagesList.length,
                   (i) {
                 return Container(
                   width: 9,

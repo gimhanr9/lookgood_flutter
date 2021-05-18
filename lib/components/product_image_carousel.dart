@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:lookgood_flutter/components/carousel_list.dart';
 import 'package:lookgood_flutter/models/Product.dart';
+import 'package:lookgood_flutter/utils/database_helper.dart';
 
 
 class ProductImageCarousel extends StatelessWidget {
+  final databaseHelper=new DatabaseHelper();
 
-  const ProductImageCarousel({
+  final List<String> images=[];
+
+
+  ProductImageCarousel({
     Key key,
     @required this.product,
   }) : super(key: key);
 
   final Product product;
 
+
   @override
   Widget build(BuildContext context) {
+    databaseHelper.getImages(product.id).then((value){
+      images.addAll(value);
+
+    });
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Column(
@@ -21,7 +31,7 @@ class ProductImageCarousel extends StatelessWidget {
         children: <Widget>[
 
           CarouselList(
-            productsList: products[id].images,
+            imagesList: images,
             type: CarouselTypes.details,
           ),
         ],

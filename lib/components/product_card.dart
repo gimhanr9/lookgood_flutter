@@ -30,7 +30,7 @@ class ProductCard extends StatelessWidget {
               ),
               child: Hero(
                 tag: "${product.id}",
-                child: Image.asset(product.imageUrl),
+                child: Image.network(product.imageUrl),
               ),
             ),
           ),
@@ -38,7 +38,7 @@ class ProductCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20.0 / 4),
             child: Text(
 
-              product.title,
+              product.name,
               style: TextStyle(color: Colors.black),
               textAlign: TextAlign.center,
             ),
