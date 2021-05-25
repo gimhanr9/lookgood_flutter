@@ -21,13 +21,14 @@ Map toMap(Cart cart) {
       return data;
 }
 
-Cart.fromMap(Map<String, dynamic> mapData) {
-      this.id = mapData["id"];
+Cart.fromMap(key,Map<dynamic, dynamic> mapData) {
+      this.id = key;
       this.productId = mapData["productId"];
       this.imageUrl = mapData["imageUrl"];
       this.productName = mapData["productName"];
       this.size = mapData["size"];
-      this.price = mapData["price"];
+      this.quantity = mapData["quantity"];
+      this.price = mapData["price"].toDouble();
 
 }
 

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 
 class Favourites {
   String productId,imageUrl,productName,productTitle;
@@ -18,12 +18,12 @@ class Favourites {
     return data;
   }
 
-  Favourites.fromMap(Map<String, dynamic> mapData) {
+  Favourites.fromMap(key,Map<dynamic, dynamic> mapData) {
     this.imageUrl = mapData["imageUrl"];
-    this.productId = mapData["id"];
+    this.productId = key;
     this.productName = mapData["productName"];
     this.productTitle = mapData["productTitle"];
-    this.price = mapData["price"];
+    this.price = mapData["price"].toDouble();
 
   }
 

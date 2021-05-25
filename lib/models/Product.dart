@@ -1,5 +1,4 @@
 
-import 'package:firebase_database/firebase_database.dart';
 
 class Product{
   String imageUrl,id,name,title,description,category,brand;
@@ -41,10 +40,9 @@ class Product{
     return data;
   }
 
-  Product.fromMap(Map<String, dynamic> mapData) {
+  Product.fromMap(key,Map<dynamic, dynamic> mapData) {
     this.imageUrl = mapData["imageUrl"];
-    //this.id = key;
-    //this.id = mapData["id"];
+    this.id = key;
     this.name = mapData["name"];
     this.title = mapData["title"];
     this.description = mapData["description"];
@@ -57,26 +55,6 @@ class Product{
     this.xlarge = mapData["xlarge"];
     this.xxl = mapData["xxl"];
   }
-
-  Product.fromSnapshot(DataSnapshot snapshot) :
-        id = snapshot.key,
-        imageUrl = snapshot.value["imageUrl"],
-
-  name = snapshot.value["name"],
-  title = snapshot.value["title"],
-  description = snapshot.value["description"],
-  category = snapshot.value["category"],
-  brand = snapshot.value["brand"],
-  price = snapshot.value["price"],
-  small = snapshot.value["small"],
-  medium = snapshot.value["medium"],
-  large = snapshot.value["large"],
-  xlarge = snapshot.value["xlarge"],
-  xxl = snapshot.value["xxl"];
-
-
-
-
 
 }
 

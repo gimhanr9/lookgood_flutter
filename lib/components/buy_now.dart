@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:lookgood_flutter/models/Product.dart';
+import 'package:lookgood_flutter/utils/database_helper.dart';
 
-
-
-class BuyNow extends StatelessWidget {
+class BuyNow extends StatefulWidget {
+  final Product product;
   const BuyNow({
     Key key,
     @required this.product,
   }) : super(key: key);
 
+
+
+  @override
+  _BuyNowState createState() => _BuyNowState(product:this.product);
+}
+
+
+class _BuyNowState extends State<BuyNow> {
   final Product product;
+  final databaseHelper=DatabaseHelper();
+
+  _BuyNowState({this.product});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +45,8 @@ class BuyNow extends StatelessWidget {
                 color: Colors.black,
               ),
               onPressed: () {
+
+
 
               },
             ),

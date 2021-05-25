@@ -10,7 +10,6 @@ Map toMap(UserModel user) {
   var data = Map<String, dynamic>();
 
   data["email"] = user.email;
-  data["password"] = user.password;
   data["name"] = user.name;
   data["address"] = user.address;
   data["phone"] = user.phone;
@@ -20,7 +19,6 @@ Map toMap(UserModel user) {
 
 UserModel.fromMap(Map<String, dynamic> mapData) {
   this.email = mapData["email"];
-  this.password = mapData["password"];
   this.name = mapData["name"];
   this.address = mapData["address"];
   this.phone = mapData["phone"];

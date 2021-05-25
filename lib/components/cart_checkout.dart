@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
-
-
-
+import 'package:lookgood_flutter/models/Cart.dart';
 import '../utils/cart_size_config.dart';
 
-class CheckoutCard extends StatelessWidget {
+class CheckoutCard extends StatefulWidget {
+  final List<Cart> cartItems;
   const CheckoutCard({
     Key key,
+    @required this.cartItems,
   }) : super(key: key);
 
   @override
+  _CheckoutCardState createState() => _CheckoutCardState(cartItems: cartItems);
+}
+
+class _CheckoutCardState extends State<CheckoutCard> {
+  final List<Cart> cartItems;
+  double total=0;
+
+  _CheckoutCardState({this.cartItems});
+
+
+
+  @override
   Widget build(BuildContext context) {
+
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: getProportionateScreenWidth(15.0),

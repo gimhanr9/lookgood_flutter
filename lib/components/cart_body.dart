@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lookgood_flutter/components/cart_item.dart';
 import 'package:lookgood_flutter/models/Cart.dart';
 import 'package:lookgood_flutter/utils/database_helper.dart';

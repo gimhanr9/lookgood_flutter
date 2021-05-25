@@ -23,9 +23,10 @@ class ProductImageCarousel extends StatelessWidget {
     databaseHelper.getImages(product.id).then((value){
       images.addAll(value);
 
+
     });
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

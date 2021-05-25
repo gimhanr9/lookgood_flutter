@@ -11,10 +11,14 @@ class CarouselList extends StatefulWidget {
     @required this.imagesList,
   }) : super(key: key);
   @override
-  _CarouselListState createState() => _CarouselListState();
+  _CarouselListState createState() => _CarouselListState(imagesList: imagesList);
 }
 
 class _CarouselListState extends State<CarouselList> {
+  final List<String> imagesList;
+
+  _CarouselListState({this.imagesList});
+
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -55,7 +59,7 @@ class _CarouselListState extends State<CarouselList> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
                     child: Image.network(
-                      "${widget.imagesList[id]}",
+                      "https://firebasestorage.googleapis.com/v0/b/lookgood-cb008385.appspot.com/o/images%2Facg-mens-long-sleeve-t-shirt-ZR8hKZ%20(3).jpg?alt=media&token=3c7d77cc-671f-4665-9340-2297d332267b",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -67,7 +71,7 @@ class _CarouselListState extends State<CarouselList> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-              widget.imagesList.length,
+              imagesList.length,
                   (i) {
                 return Container(
                   width: 9,

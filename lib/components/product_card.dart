@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:lookgood_flutter/models/Product.dart';
 
@@ -9,8 +8,8 @@ class ProductCard extends StatelessWidget {
   final Function press;
   const ProductCard({
     Key key,
-    this.product,
-    this.press,
+    @required this.product,
+    @required this.press,
   }) : super(key: key);
 
   @override

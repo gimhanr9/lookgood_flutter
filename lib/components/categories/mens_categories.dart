@@ -1,59 +1,201 @@
 import 'package:flutter/material.dart';
+import 'package:lookgood_flutter/screens/products.dart';
 
 
 
 class MensCategories extends StatefulWidget {
   @override
-  _CategoriesState createState() => _CategoriesState();
+  _MensCategoriesState createState() => _MensCategoriesState();
 }
 
-class _CategoriesState extends State<MensCategories> {
-  List<String> categories = ["Tops", "Bottoms"];
+class _MensCategoriesState extends State<MensCategories> {
 
-  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
-      child: SizedBox(
-        height: 25,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: categories.length,
-          itemBuilder: (context, index) => buildCategory(index),
-        ),
-      ),
-    );
-  }
+    return Scaffold(
+      appBar:buildAppBar(),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child:Column(
+          children:<Widget> [
 
-  Widget buildCategory(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              categories[index],
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: selectedIndex == index ? Color(0xFF535353) : Color(0xFFACACAC),
+            Container(
+              height: 115.0,
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    left: 50.0,
+                    child: Container(
+                      width: 290.0,
+                      height: 115.0,
+                      child: Card(
+                        color: Colors.deepOrangeAccent,
+
+                        child: Padding(
+
+                          padding: const EdgeInsets.only(
+                            top: 8.0,
+                            bottom: 8.0,
+                            left: 64.0,
+                          ),
+
+                          child: Column(
+
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Text("Mens Tops",
+
+                                  style: Theme.of(context).textTheme.headline5),
+                              TextButton(
+                                child: Text('View Listings'),
+                                style: TextButton.styleFrom(
+                                  primary: Colors.white,
+                                  textStyle: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 14,
+
+                                  ),
+
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Products(category: "Mens Top"
+
+                                        ),
+                                      ));
+                                },
+                              )
+
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(top: 7.5,
+                    child: Container(
+                      width: 100.0,
+                      height: 100.0,
+
+                      decoration: BoxDecoration(
+
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+
+                          fit: BoxFit.cover,
+
+                          image: AssetImage(
+                              "assets/images/mens_top.png"),
+                        ),
+                      ),
+                    ),),
+                ],
               ),
             ),
+
+            SizedBox(
+              height: 20,
+            ),
+
             Container(
-              margin: EdgeInsets.only(top: 20.0 / 4),
-              height: 2,
-              width: 30,
-              color: selectedIndex == index ? Colors.black : Colors.transparent,
-            )
+              height: 115.0,
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    left: 50.0,
+                    child: Container(
+                      width: 290.0,
+                      height: 115.0,
+                      child: Card(
+                        color: Colors.teal,
+
+                        child: Padding(
+
+                          padding: const EdgeInsets.only(
+                            top: 8.0,
+                            bottom: 8.0,
+                            left: 64.0,
+                          ),
+
+                          child: Column(
+
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Text("Mens Bottoms",
+
+                                  style: Theme.of(context).textTheme.headline5),
+                              TextButton(
+                                child: Text('View Listings'),
+                                style: TextButton.styleFrom(
+                                  primary: Colors.white,
+                                  textStyle: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 14,
+
+                                  ),
+
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Products(category: "Mens Bottom"
+
+                                        ),
+                                      ));
+                                },
+                              )
+
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(top: 7.5,
+                    child: Container(
+                      width: 100.0,
+                      height: 100.0,
+
+                      decoration: BoxDecoration(
+
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+
+                          fit: BoxFit.cover,
+
+                          image: AssetImage(
+                              "assets/images/mens_bottom.png"),
+                        ),
+                      ),
+                    ),),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
+        onPressed: ()=> Navigator.pop(context),
+
+      ),
+      title: Text('Mens'),
+
+
+    );
+  }
+
+
 }

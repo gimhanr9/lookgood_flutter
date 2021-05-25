@@ -1,38 +1,52 @@
-
 import 'package:flutter/material.dart';
-import 'package:lookgood_flutter/utils/auth_service.dart';
+import 'package:lookgood_flutter/models/Purchases.dart';
+import 'package:lookgood_flutter/models/UserModel.dart';
+import 'package:lookgood_flutter/screens/success_screen.dart';
+import 'package:lookgood_flutter/utils/database_helper.dart';
 
-class EditProfilePage extends StatefulWidget {
+class ConfirmPurchaseGuest extends StatefulWidget {
 
-  final String name,address,phone;
+  final List<Purchases> purchaseList;
+  final String condition;
 
-  const EditProfilePage({Key key, @required this.name,@required this.address,@required this.phone}) : super(key: key);
+  ConfirmPurchaseGuest({Key key,@required this.purchaseList,@required this.condition}) : super(key: key);
+
   @override
-  _EditProfilePageState createState() => _EditProfilePageState(name: this.name,address: this.address,phone: this.phone);
+  _ConfirmPurchaseGuestState createState() => _ConfirmPurchaseGuestState(purchaseList: this.purchaseList,condition: this.condition);
 
 }
 
-class _EditProfilePageState extends State<EditProfilePage> {
+class _ConfirmPurchaseGuestState extends State<ConfirmPurchaseGuest> {
 
+  final databaseHelper=new DatabaseHelper();
   final nameController = TextEditingController();
+  final emailController = TextEditingController();
   final addressController = TextEditingController();
   final phoneController = TextEditingController();
 
-  String name,address,phone;
-  final auth=new AuthService();
 
-  _EditProfilePageState({this.name,this.address,this.phone});
+  List<Purchases> purchaseList=[];
+  String condition;
+
+  _ConfirmPurchaseGuestState({this.purchaseList,this.condition});
 
   validateFields(){
-    String name,address,phone;
+    String name,email,address,phone;
 
     name=nameController.text.toString().trim();
+    email=emailController.text.toString().trim();
     address=addressController.text.toString().trim();
     phone=phoneController.text.toString().trim();
 
-    if(name.length>0 && address.length>0 && phone.length>0){
-
-      auth.updateUser(context: context,name: name,address: address,phone: phone);
+    if(name.length>0 && email.length>0 && address.length>0 && phone.length>0){
+      UserModel userModel=UserModel(email: email,name: name,address: address,phone: phone);
+      databaseHelper.purchaseGuest(purchaseList, userModel).then((value) {
+        if(value){
+          Navigator
+              .of(context)
+              .pushReplacement(MaterialPageRoute(builder: (BuildContext context) => SuccessScreen(),));
+        }
+      });
 
     }else{
       ScaffoldMessenger.of(context)
@@ -56,26 +70,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
           child: ListView(
             children: [
               Text(
-                "Edit Profile",
+                "Enter your details...",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Center(
-                child: Stack(
-                  children: [
-                      CircleAvatar(
-                        radius: 70,
-                        child: ClipOval(child: Image.asset('assets/images/user.png', height: 150, width: 150, fit: BoxFit.cover,),),
-                      ),
 
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 35,
-              ),
               Container(
                 padding: const EdgeInsets.only(bottom: 35.0),
                 child: TextField(
@@ -84,7 +82,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       contentPadding: EdgeInsets.only(bottom: 3),
                       labelText: "Name",
                       floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: name,
+                      hintStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      )),
+                ),
+              ),
+
+              Container(
+                padding: const EdgeInsets.only(bottom: 35.0),
+                child: TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(bottom: 3),
+                      labelText: "Email",
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
                       hintStyle: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -102,7 +115,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       contentPadding: EdgeInsets.only(bottom: 3),
                       labelText: "Address",
                       floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: address,
                       hintStyle: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -121,7 +133,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       contentPadding: EdgeInsets.only(bottom: 3),
                       labelText: "Phone",
                       floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: phone,
                       hintStyle: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -130,35 +141,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ),
 
-              /*buildTextField("Name", name),
-              buildTextField("Address", address),
-              buildTextField("Phone", phone),*/
               SizedBox(
                 height: 35,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  OutlinedButton(
-                    child: Text('CANCEL'),
-                    style: OutlinedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
-                      primary: Colors.white,
-                      backgroundColor: Colors.teal,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                      textStyle: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
 
                   ElevatedButton(
-                    child: Text('SAVE'),
+                    child: Text('CONFIRM'),
                     style: ElevatedButton.styleFrom(
                       elevation: 2,
                       primary: Colors.teal,
@@ -167,9 +158,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           borderRadius: BorderRadius.circular(20)),
 
                       textStyle: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                          color: Colors.white,
+                        fontSize: 14,
+                        letterSpacing: 2.2,
+                        color: Colors.white,
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 50),
 
@@ -198,7 +189,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         onPressed: ()=> Navigator.pop(context),
 
       ),
-      title: Text('Edit Account'),
+      title: Text('Enter Details'),
 
     );
   }

@@ -9,18 +9,6 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final databaseRef = FirebaseDatabase.instance.reference();
 
-  /*UserModel _userFromFirebaseUser(User user) {
-    return user != null ? UserModel(uid: user.uid) : null;
-  }
-
-  // auth change user stream
-  Stream<User> get user {
-    return _auth.authStateChanges()
-        .map((User user) => _userFromFirebaseUser(user));
-    //.map((FirebaseUser user) => _userFromFirebaseUser(user));
-        .map(_userFromFirebaseUser);
-  }
-*/
 
   Stream<User> get authStateChanges => _auth.authStateChanges();
 
@@ -73,18 +61,38 @@ class AuthService {
     }
   }
 
-  Future<UserModel> getUserDetails() async{
+  Future<List<UserModel>> getUserDetails() async{
     User user=FirebaseAuth.instance.currentUser;
-    UserModel userModel=UserModel();
+    List<UserModel> userList=[];
 
     await databaseRef.child("users").child(user.uid).once().then((DataSnapshot snapshot) async{
 
-      snapshot.value.foreach((key,childSnapshot){
-        userModel=(UserModel.fromMap(Map.from(childSnapshot)));
-      });
+      if(snapshot.value!=null) {
+
+
+        Map<dynamic, dynamic> userDetails = snapshot.value;
+        userList.clear();
+        UserModel userModel=UserModel(email: userDetails["email"],name: userDetails["name"], address: userDetails["address"],
+        phone: userDetails["phone"]);
+        userList.add(userModel);
+      }
+
 
     });
-    return userModel;
+    return userList;
+
+  }
+
+  Future<void> updateUser({BuildContext context, String name, String address, String phone}) async{
+    User user=FirebaseAuth.instance.currentUser;
+    UserModel userModel=UserModel(email: user.email,name: name,address: address,phone: phone);
+
+    await databaseRef.child("users").child(user.uid).set(userModel.toMap(userModel));
+    ScaffoldMessenger.of(context).showSnackBar(
+      AuthService.customSnackBar(
+        content: "User details updated!",
+      ),
+    );
 
   }
 

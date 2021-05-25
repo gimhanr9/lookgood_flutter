@@ -16,7 +16,6 @@ class _LoginRegisterState extends State<LoginRegister> {
   final auth=new AuthService();
   User user;
   bool isLoggingIn=false;
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -46,6 +45,12 @@ class _LoginRegisterState extends State<LoginRegister> {
 
       });
 
+    }else{
+      ScaffoldMessenger.of(context)
+          .showSnackBar(
+          SnackBar(
+            content: Text('Username and password must be entered!'),
+          ));
     }
   }
 
@@ -204,6 +209,12 @@ class _SecondState extends State<Second> {
 
       });
 
+    }else{
+      ScaffoldMessenger.of(context)
+          .showSnackBar(
+          SnackBar(
+            content: Text('Please fill all fields!'),
+          ));
     }
   }
   @override
@@ -352,17 +363,5 @@ class _SecondState extends State<Second> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLoggedIn', value);
   }
-  /*_showErrorSnack(String message) {
-    final snackbar = SnackBar(
-      backgroundColor: Colors.black,
-      content: Text(
-        "$message",
-        style: TextStyle(color: Colors.red),
-      ),
-    );
-    _scaffoldKey.currentState.showSnackBar(snackbar);
-    setState(() {
-      _isSubmitting = false;
-    });
-  }*/
+
 }
