@@ -3,10 +3,12 @@ import 'package:lookgood_flutter/components/categories/accessory_category.dart';
 import 'package:lookgood_flutter/components/categories/kids_categories.dart';
 import 'package:lookgood_flutter/components/categories/mens_categories.dart';
 import 'package:lookgood_flutter/components/categories/womens_categories.dart';
+import 'package:lookgood_flutter/components/product_card_home.dart';
 import 'package:lookgood_flutter/models/Product.dart';
 import 'package:lookgood_flutter/screens/contact_us.dart';
 import 'package:lookgood_flutter/screens/favourites.dart';
 import 'package:lookgood_flutter/screens/login_register.dart';
+import 'package:lookgood_flutter/screens/product_details.dart';
 import 'package:lookgood_flutter/screens/profile_screen.dart';
 import 'package:lookgood_flutter/screens/purchases.dart';
 import 'package:lookgood_flutter/utils/auth_service.dart';
@@ -68,11 +70,11 @@ class _HomeState extends State<Home> {
             DrawerHeader(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(colors: <Color>[
-                      Colors.deepOrange,
-                      Colors.orangeAccent
+                      Colors.black12,
+                      Colors.blue
                     ])
                 ),
-                child: Text('LookGOOD')),
+                child: Text('LookGOOD',style: TextStyle(color: Colors.white),)),
 
             ListTile(
               title: Text('Home'),
@@ -204,13 +206,6 @@ class _HomeState extends State<Home> {
               },
             ),
 
-
-
-
-
-
-
-
           ],
         ),
       ),
@@ -238,7 +233,7 @@ class _HomeState extends State<Home> {
                       children: [
                         SizedBox(height: getProportionateScreenHeight(80)),
                         Text(
-                          "Travelers",
+                          "LookGOOD",
                           style: TextStyle(
                               fontSize: getProportionateScreenWidth(73),
                               fontWeight: FontWeight.bold,
@@ -246,7 +241,7 @@ class _HomeState extends State<Home> {
                               height: 0.5),
                         ),
                         Text(
-                          "Travel Community App",
+                          "Ultimate fashion destination",
                           style: TextStyle(color: Colors.white),
                         ),
                       ],
@@ -282,29 +277,19 @@ class _HomeState extends State<Home> {
                     margin: EdgeInsets.symmetric(vertical: 20.0),
                     height: 180,
                     child: ListView.builder(
-                      itemCount: products.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index){
+                        itemCount: products.length,
+                        scrollDirection: Axis.horizontal,
 
-
-
-                        return Container(
-                          width: 160.0,
-                          child: Card(
-                            child: Wrap(
-                              children: [
-                                Image.network(
-                                    products[index].imageUrl
+                        itemBuilder: (context, index) => ProductCardHome(
+                          product: products[index],
+                          press: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProductDetails(
+                                  product: products[index],
                                 ),
-                                ListTile(
-                                  title: Text(products[index].name),
-                                  subtitle: Text(products[index].price.toString()),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                              )),
+                        )
 
 
 
@@ -325,10 +310,10 @@ class _HomeState extends State<Home> {
 
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
 
-      title: Text('Home',style: TextStyle(color: Color(0x000000)),),
+      title: Text('Home',),
 
       actions: <Widget>[
         IconButton(

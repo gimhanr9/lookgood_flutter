@@ -115,7 +115,7 @@ class _PurchasesPageState extends State<PurchasesPage> {
                     ),
                     SizedBox(height: 10),
                     TextButton(
-                      child: purchases[index].isRated==true?Text('Edit review'):Text('Write review'),
+                      child: purchases[index].isRated==true?Text('Reviewed'):Text('Write review'),
                       style: TextButton.styleFrom(
                         primary: Colors.blue,
                         textStyle: TextStyle(
@@ -126,7 +126,15 @@ class _PurchasesPageState extends State<PurchasesPage> {
 
                       ),
                       onPressed: () {
-                        _showRatingAppDialog(purchases[index]);
+                        if(purchases[index].isRated){
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(
+                              SnackBar(
+                                content: Text('Already rated!'),
+                              ));
+                        }else {
+                          _showRatingAppDialog(purchases[index]);
+                        }
                       },
                     )
 
@@ -151,7 +159,7 @@ class _PurchasesPageState extends State<PurchasesPage> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
       leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
         onPressed: ()=> Navigator.pop(context),

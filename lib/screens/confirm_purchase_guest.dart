@@ -183,7 +183,7 @@ class _ConfirmPurchaseGuestState extends State<ConfirmPurchaseGuest> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
       leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
         onPressed: ()=> Navigator.pop(context),
@@ -194,24 +194,5 @@ class _ConfirmPurchaseGuestState extends State<ConfirmPurchaseGuest> {
     );
   }
 
-  Widget buildTextField(
-      String labelText, String placeholder) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 35.0),
-      child: TextField(
 
-        decoration: InputDecoration(
-
-            contentPadding: EdgeInsets.only(bottom: 3),
-            labelText: labelText,
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placeholder,
-            hintStyle: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            )),
-      ),
-    );
-  }
 }

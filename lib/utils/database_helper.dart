@@ -144,11 +144,6 @@ class DatabaseHelper{
     favourites=Favourites(imageUrl: image,productName: name,productTitle: title,price:price);
 
     await databaseRef.child("favourites").child(user.uid).child(productId).set(favourites.toMap(favourites));
-    ScaffoldMessenger.of(context).showSnackBar(
-      DatabaseHelper.customSnackBar(
-        content: "Added to favorites",
-      ),
-    );
 
   }
   //function to check if a given product id is already a favorite for the current user.
@@ -225,12 +220,14 @@ class DatabaseHelper{
             ),
           );
         }else{
-          addToCart(context: context,productId: cart.productId,image: cart.imageUrl,name: cart.productName,size: cart.size,quantity: cart.quantity,price: cart.price);
+          addToCart(context: context,productId: cart.productId,image: cart.imageUrl,name: cart.productName,size: cart.size,
+              quantity: cart.quantity,price: cart.price);
         }
 
 
       }else{
-        addToCart(context: context,productId: cart.productId,image: cart.imageUrl,name: cart.productName,size: cart.size,quantity: cart.quantity,price: cart.price);
+        addToCart(context: context,productId: cart.productId,image: cart.imageUrl,name: cart.productName,size: cart.size,
+            quantity: cart.quantity,price: cart.price);
 
       }
 
@@ -370,11 +367,13 @@ class DatabaseHelper{
   }
 
 
+
+
   Future<void>updatePurchase(String purchaseId) async{
     User user=FirebaseAuth.instance.currentUser;
     if(user!=null){
       await databaseRef.child("purchases").child(user.uid).child(purchaseId).update({
-        'rated':true
+        'isRated':true
       });
     }
 
@@ -404,7 +403,7 @@ class DatabaseHelper{
         if(snapshot.value!=null) {
           int dbQuantity=snapshot.value;
 
-          if(dbQuantity>quantity){
+          if(dbQuantity>=quantity){
             int newQuantity=dbQuantity-quantity;
             updateStocks(productId,size,newQuantity);
             writePurchase(purchaseItem[i]);
@@ -434,7 +433,7 @@ class DatabaseHelper{
         if(snapshot.value!=null) {
           int dbQuantity=snapshot.value;
 
-          if(dbQuantity>quantity){
+          if(dbQuantity>=quantity){
             int newQuantity=dbQuantity-quantity;
             updateStocks(productId,size,newQuantity);
             writeTransaction(purchaseItem[i],userModel);

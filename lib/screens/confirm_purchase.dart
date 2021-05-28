@@ -50,7 +50,7 @@ class _ConfirmPurchaseState extends State<ConfirmPurchase> {
   }
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
       leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
         onPressed: ()=> Navigator.pop(context),
@@ -63,130 +63,130 @@ class _ConfirmPurchaseState extends State<ConfirmPurchase> {
 
   Widget confirmView() {
     return userList.length==0 ?Center(child: CircularProgressIndicator()):
-        Container(
+    SingleChildScrollView(
+      padding: EdgeInsets.symmetric(vertical: 20),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 25, 20, 4),
+            child: Container(
+              height: 60,
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Confirm your details...", style: TextStyle(color: Colors.black,fontSize: 18),),
+                ),
+              ),
+            ),
+          ),
 
-          child: ListView(
 
-            children: <Widget>[
-              Container(
-                height: 60,
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Confirm your details...", style: TextStyle(color: Colors.white70),),
+
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 25, 20, 4),
+            child: Container(
+              height: 60,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(userList[0].name, style: TextStyle(color: Colors.black),),
+                ),
+              ), decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(width: 1.0, color: Colors.black12)),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
+            child: Container(
+              height: 60,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(userList[0].email, style: TextStyle(color: Colors.black),),
+                ),
+              ), decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(width: 1.0, color: Colors.black12)),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
+            child: Container(
+              height: 60,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(userList[0].address, style: TextStyle(color: Colors.black),),
+                ),
+              ), decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(width: 1.0, color: Colors.black12)),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
+            child: Container(
+              height: 60,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(userList[0].phone, style: TextStyle(color: Colors.black),),
+                ),
+              ), decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(width: 1.0, color: Colors.black12)),
+            ),
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                child: Text('Edit'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.teal,
+                  onPrimary: Colors.white,
+                  textStyle: TextStyle(
+                    fontSize: 20,
                   ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileScreen(
 
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 25, 20, 4),
-                child: Container(
-                  height: 60,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(userList[0].name, style: TextStyle(color: Colors.white70),),
-                    ),
-                  ), decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(width: 1.0, color: Colors.white70)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
-                child: Container(
-                  height: 60,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(userList[0].email, style: TextStyle(color: Colors.white70),),
-                    ),
-                  ), decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(width: 1.0, color: Colors.white70)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
-                child: Container(
-                  height: 60,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(userList[0].address, style: TextStyle(color: Colors.white70),),
-                    ),
-                  ), decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(width: 1.0, color: Colors.white70)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
-                child: Container(
-                  height: 60,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(userList[0].phone, style: TextStyle(color: Colors.white70),),
-                    ),
-                  ), decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(width: 1.0, color: Colors.white70)),
-                ),
-              ),
-
-              Expanded(
-                child:Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-
-                    ElevatedButton(
-                      child: Text('Edit'),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.teal,
-                        onPrimary: Colors.white,
-                        textStyle: TextStyle(
-                          fontSize: 20,
                         ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProfileScreen(
+                      ));
 
-                              ),
-                            ));
-
-                      },
-                    ),
-
-
-                    ElevatedButton(
-                      child: Text('Confirm Order'),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.teal,
-                        onPrimary: Colors.white,
-                        textStyle: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      onPressed: () {
-                        databaseHelper.purchase(purchaseList, condition).then((value) {
-                          if(value){
-                            Navigator
-                                .of(context)
-                                .pushReplacement(MaterialPageRoute(builder: (BuildContext context) => SuccessScreen(),));
-                          }
-                        });
-
-                      },
-                    ),
-
-                  ],
+                },
+              ),
+              ElevatedButton(
+                child: Text('Confirm'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.teal,
+                  onPrimary: Colors.white,
+                  textStyle: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
+                onPressed: () {
+                  databaseHelper.purchase(purchaseList, condition).then((value) {
+                    if(value){
+                      Navigator
+                          .of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (BuildContext context) => SuccessScreen(),));
+                    }
+                  });
+                },
+              ),
 
-              )
+
             ],
           ),
-        );
+
+        ],
+      ),
+    );
 
   }
 }

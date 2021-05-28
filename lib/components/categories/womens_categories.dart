@@ -17,167 +17,169 @@ class _WomensCategoriesState extends State<WomensCategories> {
       appBar:buildAppBar(),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child:Column(
-          children:<Widget> [
+        child:SingleChildScrollView(
+          child:Column(
+            children:<Widget> [
 
-            Container(
-              height: 115.0,
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    left: 50.0,
-                    child: Container(
-                      width: 290.0,
-                      height: 115.0,
-                      child: Card(
-                        color: Colors.black12,
+              Container(
+                height: 115.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 50.0,
+                      child: Container(
+                        width: 290.0,
+                        height: 115.0,
+                        child: Card(
+                          color: Colors.black12,
 
-                        child: Padding(
+                          child: Padding(
 
-                          padding: const EdgeInsets.only(
-                            top: 8.0,
-                            bottom: 8.0,
-                            left: 64.0,
-                          ),
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                              left: 64.0,
+                            ),
 
-                          child: Column(
+                            child: Column(
 
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Text("Womens Tops",
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Text("Womens Tops",
 
-                                  style: Theme.of(context).textTheme.headline5),
-                              TextButton(
-                                child: Text('View Listings'),
-                                style: TextButton.styleFrom(
-                                  primary: Colors.blue,
-                                  textStyle: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 14,
+                                    style: Theme.of(context).textTheme.headline5),
+                                TextButton(
+                                  child: Text('View Listings'),
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.blue,
+                                    textStyle: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+
+                                    ),
 
                                   ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Products(category: "Womens Top"
 
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Products(category: "Womens Top"
+                                          ),
+                                        ));
+                                  },
+                                )
 
-                                        ),
-                                      ));
-                                },
-                              )
-
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(top: 7.5,
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
+                    Positioned(top: 7.5,
+                      child: Container(
+                        width: 100.0,
+                        height: 100.0,
 
-                      decoration: BoxDecoration(
+                        decoration: BoxDecoration(
 
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
 
-                          fit: BoxFit.cover,
+                            fit: BoxFit.cover,
 
-                          image: AssetImage(
-                              "assets/images/ladies_top.png"),
-                        ),
-                      ),
-                    ),),
-                ],
-              ),
-            ),
-
-            SizedBox(
-              height: 20,
-            ),
-
-            Container(
-              height: 115.0,
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    left: 50.0,
-                    child: Container(
-                      width: 290.0,
-                      height: 115.0,
-                      child: Card(
-                        color: Colors.deepOrangeAccent,
-
-                        child: Padding(
-
-                          padding: const EdgeInsets.only(
-                            top: 8.0,
-                            bottom: 8.0,
-                            left: 64.0,
+                            image: AssetImage(
+                                "assets/images/ladies_top.png"),
                           ),
+                        ),
+                      ),),
+                  ],
+                ),
+              ),
 
-                          child: Column(
+              SizedBox(
+                height: 20,
+              ),
 
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Text("Womens Bottoms",
+              Container(
+                height: 115.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 50.0,
+                      child: Container(
+                        width: 290.0,
+                        height: 115.0,
+                        child: Card(
+                          color: Colors.deepOrangeAccent,
 
-                                  style: Theme.of(context).textTheme.headline5),
-                              TextButton(
-                                child: Text('View Listings'),
-                                style: TextButton.styleFrom(
-                                  primary: Colors.white,
-                                  textStyle: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 14,
+                          child: Padding(
+
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                              left: 64.0,
+                            ),
+
+                            child: Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Text("Womens Bottoms",
+
+                                    style: Theme.of(context).textTheme.headline5),
+                                TextButton(
+                                  child: Text('View Listings'),
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.white,
+                                    textStyle: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+
+                                    ),
 
                                   ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Products(category: "Womens Bottom"
 
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Products(category: "Womens Bottom"
+                                          ),
+                                        ));
+                                  },
+                                )
 
-                                        ),
-                                      ));
-                                },
-                              )
-
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(top: 7.5,
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
+                    Positioned(top: 7.5,
+                      child: Container(
+                        width: 100.0,
+                        height: 100.0,
 
-                      decoration: BoxDecoration(
+                        decoration: BoxDecoration(
 
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
 
-                          fit: BoxFit.cover,
+                            fit: BoxFit.cover,
 
-                          image: AssetImage(
-                              "assets/images/mens_bottom.png"),
+                            image: AssetImage(
+                                "assets/images/mens_bottom.png"),
+                          ),
                         ),
-                      ),
-                    ),),
-                ],
+                      ),),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -185,13 +187,13 @@ class _WomensCategoriesState extends State<WomensCategories> {
 
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
       leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
         onPressed: ()=> Navigator.pop(context),
 
       ),
-      title: Text('Womens'),
+      title: Text('Ladies'),
 
 
     );

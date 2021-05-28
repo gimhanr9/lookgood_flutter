@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lookgood_flutter/models/TotalRating.dart';
 import 'package:lookgood_flutter/utils/database_helper.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -15,7 +14,8 @@ class TitleRating extends StatefulWidget {
 
 class _TitleRatingState extends State<TitleRating> {
   int numOfReviews=0;
-  double rating=0.0,price;
+  bool isRate=false;
+  double rating,newRating=1.0,price;
   final String name,brand,id;
   final databaseHelper=new DatabaseHelper();
 
@@ -25,10 +25,12 @@ class _TitleRatingState extends State<TitleRating> {
   void initState() {
     super.initState();
     databaseHelper.getTotalRatings(id).then((value) {
-      TotalRating totalRating=value;
+
       setState(() {
-        numOfReviews=totalRating.counter;
-        rating=totalRating.totalRating;
+        numOfReviews=value.counter;
+        rating=value.totalRating;
+        newRating=rating;
+        isRate=true;
 
       });
     });
@@ -40,7 +42,6 @@ class _TitleRatingState extends State<TitleRating> {
   @override
   Widget build(BuildContext context) {
 
-    print(rating);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Row(
@@ -55,12 +56,15 @@ class _TitleRatingState extends State<TitleRating> {
                 ),
                 SizedBox(height: 10),
                 Row(
+
                   children: <Widget>[
+
                     SmoothStarRating(
                       borderColor: Colors.yellow,
-                      //isReadOnly: true,
-                      rating: rating,
+                      isReadOnly: true,
+                      rating: 0.0,
                       starCount: 5,
+                      spacing: 0.0,
                       color: Colors.yellow,
                       allowHalfRating: true,
                     ),

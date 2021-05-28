@@ -23,7 +23,7 @@ class RatingItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                rating.name,
+                rating.name + " - "+rating.date,
                 style: TextStyle(color: Colors.black, fontSize: 14),
                 maxLines: 2,
               ),
@@ -58,18 +58,7 @@ class RatingItem extends StatelessWidget {
             ],
           ),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
 
-            children: [
-              Text(
-                rating.date,
-                style: TextStyle(color: Colors.black, fontSize: 12),
-                maxLines: 2,
-              ),
-
-            ],
-          )
         ],
       ),
     );

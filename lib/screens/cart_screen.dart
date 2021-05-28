@@ -205,13 +205,12 @@ class _CartScreenState extends State<CartScreen> {
                           price: cartItems[i].price,isRated: false));
                         }
                         if(purchases.length>0){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ConfirmPurchase(
-                                  purchaseList: purchases, condition: "cart",
-                                ),
-                              ));
+                          Navigator
+                              .of(context)
+                              .pushReplacement(MaterialPageRoute(builder: (BuildContext context) => ConfirmPurchase(
+                            purchaseList: purchases, condition: "cart",
+                          ),));
+
                         }
 
                       },
@@ -243,9 +242,7 @@ class _CartScreenState extends State<CartScreen> {
     for(int i=0;i<cartItems.length;i++){
       tot=tot+cartItems[i].price;
     }
-    /*setState(() {
-      total=tot;
-    });*/
+
     total=tot;
   }
 }

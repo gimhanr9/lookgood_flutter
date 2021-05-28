@@ -87,7 +87,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     action: SnackBarAction(
                       label: 'Undo',
                       onPressed: () {
-                        databaseHelper.addToFavorite(productId: deletedItem.productId,image: deletedItem.imageUrl,
+                        databaseHelper.addToFavorite(context:context,productId: deletedItem.productId,image: deletedItem.imageUrl,
                             name: deletedItem.productName, title: deletedItem.productTitle, price: deletedItem.price);
                         setState(() {
                           favorites.insert(index, deletedItem);
@@ -127,7 +127,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
       leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
         onPressed: ()=> Navigator.pop(context),

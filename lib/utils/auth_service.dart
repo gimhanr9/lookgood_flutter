@@ -96,6 +96,19 @@ class AuthService {
 
   }
 
+  Future<bool>passwordReset(String email)async{
+
+    try {
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      await _auth.sendPasswordResetEmail(email: email);
+      return true;
+
+    }catch(error){
+      return false;
+    }
+
+  }
+
   Future<bool> isLoggedIn() async{
     User user=FirebaseAuth.instance.currentUser;
 

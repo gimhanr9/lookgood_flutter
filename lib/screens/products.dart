@@ -1,9 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:lookgood_flutter/components/categories/kids_categories.dart';
-import 'package:lookgood_flutter/components/categories/mens_categories.dart';
-import 'package:lookgood_flutter/components/categories/womens_categories.dart';
 import 'package:lookgood_flutter/components/product_card.dart';
 import 'package:lookgood_flutter/models/Product.dart';
 import 'package:lookgood_flutter/screens/product_details.dart';
@@ -117,15 +114,15 @@ class _ProductsState extends State<Products> {
 
     return Scaffold(
 
-      appBar: buildAppBar(),
+      appBar: buildAppBar(context),
       body:buildProducts(),
     );
 
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
       leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
       onPressed: ()=> Navigator.pop(context),

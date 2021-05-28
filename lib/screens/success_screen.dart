@@ -25,11 +25,11 @@ class SuccessScreen extends StatelessWidget {
             Text(
               "Purchase Successful!",
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
-              textAlign: TextAlign.center,
+
             ),
             Spacer(),
             SizedBox(

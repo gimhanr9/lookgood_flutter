@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lookgood_flutter/components/image_swipe.dart';
 import 'package:lookgood_flutter/components/title_rating.dart';
 import 'package:lookgood_flutter/models/Cart.dart';
 import 'package:lookgood_flutter/models/Product.dart';
 import 'package:lookgood_flutter/models/Purchases.dart';
+import 'package:lookgood_flutter/screens/confirm_purchase_guest.dart';
 import 'package:lookgood_flutter/screens/product_ratings.dart';
 import 'package:lookgood_flutter/utils/database_helper.dart';
 
@@ -41,26 +41,27 @@ class _ProductDetailsState extends State<ProductDetails> {
     databaseHelper.isLoggedIn().then((value) {
       if(value) {
         isLogged =true;
+        databaseHelper.isFavorite(product.id).then((value) {
+          if(value){
+            setState(() {
+              isFavorite=true;
+
+            });
+
+          }else{
+            setState(() {
+              isFavorite=false;
+
+            });
+
+          }
+        });
       }else{
         isLogged=false;
       }
     });
 
-    databaseHelper.isFavorite(product.id).then((value) {
-      if(value){
-        setState(() {
-          isFavorite=true;
 
-        });
-
-      }else{
-        setState(() {
-          isFavorite=false;
-
-        });
-
-      }
-    });
   }
 
 
@@ -90,7 +91,9 @@ class _ProductDetailsState extends State<ProductDetails> {
       sizeList.add("xxl");
       quantity["xxl"]=product.xxl;
     }
-
+    if(dropdownvalue=='') {
+      dropdownvalue = sizeList[0];
+    }
 
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -153,6 +156,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     onChanged: (String newValue){
                                       setState(() {
                                         dropdownvalue = newValue;
+                                        numOfItems=1;
                                       });
                                     },
                                   ),
@@ -234,9 +238,18 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 buildOutlinedButton(
                                     icon: Icons.add,
                                     press: () {
-                                      setState(() {
-                                        numOfItems++;
-                                      });
+                                      if(numOfItems< quantity[dropdownvalue]-1) {
+                                        setState(() {
+                                          numOfItems++;
+                                        });
+                                      }else{
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                            SnackBar(
+                                              content: Text('Stocks exceeding!'),
+                                            ));
+
+                                      }
                                     }),
                               ],
                             ),
@@ -268,6 +281,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                                           name: product.name,
                                           title: product.title,
                                           price: product.price);
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                          SnackBar(
+                                            content: Text('Added to favorites!'),
+                                          ));
                                       setState(() {
                                         isFavorite=true;
                                       });
@@ -356,14 +374,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                                             price: product.price,isRated: false);
                                         purchaseList.add(purchases);
 
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => ConfirmPurchase(
-                                                purchaseList: purchaseList, condition: "direct",
-                                              ),
-                                            ));
+                                        Navigator
+                                            .of(context)
+                                            .pushReplacement(MaterialPageRoute(builder: (BuildContext context) => ConfirmPurchase(
+                                          purchaseList: purchaseList, condition: "direct",
+                                        ),));
+
                                       }else{
+                                        List<Purchases> purchaseList=[];
+                                        purchaseList.clear();
+                                        Purchases purchases=Purchases(productId: product.id,imageUrl: product.imageUrl,
+                                            productName: product.name,size: dropdownvalue,quantity: numOfItems,
+                                            price: product.price,isRated: false);
+                                        purchaseList.add(purchases);
+
+
+                                        Navigator
+                                            .of(context)
+                                            .pushReplacement(MaterialPageRoute(builder: (BuildContext context) => ConfirmPurchaseGuest(
+                                          purchaseList: purchaseList, condition: "direct",
+                                        ),));
 
                                       }
                                     },
@@ -399,7 +429,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
       leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
         onPressed: ()=> Navigator.pop(context),

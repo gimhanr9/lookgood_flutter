@@ -8,7 +8,7 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         elevation: 0,
         leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
           onPressed: ()=> Navigator.pop(context),
@@ -27,7 +27,7 @@ class ContactUs extends StatelessWidget {
             Text(
               "Call our 24/7 hotline for any enquiries",
               style: TextStyle(
-                fontSize: 14,
+                fontSize: getProportionateScreenWidth(30),
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -53,7 +53,8 @@ class ContactUs extends StatelessWidget {
             Spacer(),
           ],
         ),
-      );
+
+    );
 
   }
 }

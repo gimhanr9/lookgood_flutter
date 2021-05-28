@@ -17,332 +17,334 @@ class _KidsCategoriesState extends State<KidsCategories> {
       appBar:buildAppBar(),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child:Column(
-          children:<Widget> [
+        child:SingleChildScrollView(
+          child:Column(
+            children:<Widget> [
 
-            Container(
-              height: 115.0,
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    left: 50.0,
-                    child: Container(
-                      width: 290.0,
-                      height: 115.0,
-                      child: Card(
-                        color: Colors.deepOrangeAccent,
+              Container(
+                height: 115.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 50.0,
+                      child: Container(
+                        width: 290.0,
+                        height: 115.0,
+                        child: Card(
+                          color: Colors.deepOrangeAccent,
 
-                        child: Padding(
+                          child: Padding(
 
-                          padding: const EdgeInsets.only(
-                            top: 8.0,
-                            bottom: 8.0,
-                            left: 64.0,
-                          ),
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                              left: 64.0,
+                            ),
 
-                          child: Column(
+                            child: Column(
 
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Text("Boys Tops",
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Text("Boys Tops",
 
-                                  style: Theme.of(context).textTheme.headline5),
-                              TextButton(
-                                child: Text('View Listings'),
-                                style: TextButton.styleFrom(
-                                  primary: Colors.white,
-                                  textStyle: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 14,
+                                    style: Theme.of(context).textTheme.headline5),
+                                TextButton(
+                                  child: Text('View Listings'),
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.white,
+                                    textStyle: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+
+                                    ),
 
                                   ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Products(category: "Boys Top"
 
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Products(category: "Boys Top"
+                                          ),
+                                        ));
+                                  },
+                                )
 
-                                        ),
-                                      ));
-                                },
-                              )
-
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(top: 7.5,
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
+                    Positioned(top: 7.5,
+                      child: Container(
+                        width: 100.0,
+                        height: 100.0,
 
-                      decoration: BoxDecoration(
+                        decoration: BoxDecoration(
 
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
 
-                          fit: BoxFit.cover,
+                            fit: BoxFit.cover,
 
-                          image: AssetImage(
-                              "assets/images/baby_top.png"),
-                        ),
-                      ),
-                    ),),
-                ],
-              ),
-            ),
-
-            SizedBox(
-              height: 20,
-            ),
-
-            Container(
-              height: 115.0,
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    left: 50.0,
-                    child: Container(
-                      width: 290.0,
-                      height: 115.0,
-                      child: Card(
-                        color: Colors.black12,
-
-                        child: Padding(
-
-                          padding: const EdgeInsets.only(
-                            top: 8.0,
-                            bottom: 8.0,
-                            left: 64.0,
+                            image: AssetImage(
+                                "assets/images/baby_top.png"),
                           ),
+                        ),
+                      ),),
+                  ],
+                ),
+              ),
 
-                          child: Column(
+              SizedBox(
+                height: 20,
+              ),
 
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Text("Boys Bottoms",
+              Container(
+                height: 115.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 50.0,
+                      child: Container(
+                        width: 290.0,
+                        height: 115.0,
+                        child: Card(
+                          color: Colors.black12,
 
-                                  style: Theme.of(context).textTheme.headline5),
-                              TextButton(
-                                child: Text('View Listings'),
-                                style: TextButton.styleFrom(
-                                  primary: Colors.blue,
-                                  textStyle: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 14,
+                          child: Padding(
+
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                              left: 64.0,
+                            ),
+
+                            child: Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Text("Boys Bottoms",
+
+                                    style: Theme.of(context).textTheme.headline5),
+                                TextButton(
+                                  child: Text('View Listings'),
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.blue,
+                                    textStyle: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+
+                                    ),
 
                                   ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Products(category: "Boys Bottom"
 
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Products(category: "Boys Bottom"
+                                          ),
+                                        ));
+                                  },
+                                )
 
-                                        ),
-                                      ));
-                                },
-                              )
-
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(top: 7.5,
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
+                    Positioned(top: 7.5,
+                      child: Container(
+                        width: 100.0,
+                        height: 100.0,
 
-                      decoration: BoxDecoration(
+                        decoration: BoxDecoration(
 
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
 
-                          fit: BoxFit.cover,
+                            fit: BoxFit.cover,
 
-                          image: AssetImage(
-                              "assets/images/baby_bottom.png"),
-                        ),
-                      ),
-                    ),),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-
-            Container(
-              height: 115.0,
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    left: 50.0,
-                    child: Container(
-                      width: 290.0,
-                      height: 115.0,
-                      child: Card(
-                        color: Colors.blueGrey,
-
-                        child: Padding(
-
-                          padding: const EdgeInsets.only(
-                            top: 8.0,
-                            bottom: 8.0,
-                            left: 64.0,
+                            image: AssetImage(
+                                "assets/images/baby_bottom.png"),
                           ),
+                        ),
+                      ),),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
 
-                          child: Column(
+              Container(
+                height: 115.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 50.0,
+                      child: Container(
+                        width: 290.0,
+                        height: 115.0,
+                        child: Card(
+                          color: Colors.blueGrey,
 
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Text("Girls Tops",
+                          child: Padding(
 
-                                  style: Theme.of(context).textTheme.headline5),
-                              TextButton(
-                                child: Text('View Listings'),
-                                style: TextButton.styleFrom(
-                                  primary: Colors.white,
-                                  textStyle: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 14,
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                              left: 64.0,
+                            ),
+
+                            child: Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Text("Girls Tops",
+
+                                    style: Theme.of(context).textTheme.headline5),
+                                TextButton(
+                                  child: Text('View Listings'),
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.white,
+                                    textStyle: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+
+                                    ),
 
                                   ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Products(category: "Girls Top"
 
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Products(category: "Girls Top"
+                                          ),
+                                        ));
+                                  },
+                                )
 
-                                        ),
-                                      ));
-                                },
-                              )
-
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(top: 7.5,
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
+                    Positioned(top: 7.5,
+                      child: Container(
+                        width: 100.0,
+                        height: 100.0,
 
-                      decoration: BoxDecoration(
+                        decoration: BoxDecoration(
 
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
 
-                          fit: BoxFit.cover,
+                            fit: BoxFit.cover,
 
-                          image: AssetImage(
-                              "assets/images/baby_top.png"),
-                        ),
-                      ),
-                    ),),
-                ],
-              ),
-            ),
-
-            SizedBox(
-              height: 20,
-            ),
-
-            Container(
-              height: 115.0,
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    left: 50.0,
-                    child: Container(
-                      width: 290.0,
-                      height: 115.0,
-                      child: Card(
-                        color: Colors.teal,
-
-                        child: Padding(
-
-                          padding: const EdgeInsets.only(
-                            top: 8.0,
-                            bottom: 8.0,
-                            left: 64.0,
+                            image: AssetImage(
+                                "assets/images/baby_top.png"),
                           ),
+                        ),
+                      ),),
+                  ],
+                ),
+              ),
 
-                          child: Column(
+              SizedBox(
+                height: 20,
+              ),
 
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Text("Girls Bottoms",
+              Container(
+                height: 115.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 50.0,
+                      child: Container(
+                        width: 290.0,
+                        height: 115.0,
+                        child: Card(
+                          color: Colors.teal,
 
-                                  style: Theme.of(context).textTheme.headline5),
-                              TextButton(
-                                child: Text('View Listings'),
-                                style: TextButton.styleFrom(
-                                  primary: Colors.white,
-                                  textStyle: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 14,
+                          child: Padding(
+
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                              left: 64.0,
+                            ),
+
+                            child: Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Text("Girls Bottoms",
+
+                                    style: Theme.of(context).textTheme.headline5),
+                                TextButton(
+                                  child: Text('View Listings'),
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.white,
+                                    textStyle: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 14,
+
+                                    ),
 
                                   ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Products(category: "Girls Bottom"
 
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Products(category: "Girls Bottom"
+                                          ),
+                                        ));
+                                  },
+                                )
 
-                                        ),
-                                      ));
-                                },
-                              )
-
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(top: 7.5,
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
+                    Positioned(top: 7.5,
+                      child: Container(
+                        width: 100.0,
+                        height: 100.0,
 
-                      decoration: BoxDecoration(
+                        decoration: BoxDecoration(
 
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
 
-                          fit: BoxFit.cover,
+                            fit: BoxFit.cover,
 
-                          image: AssetImage(
-                              "assets/images/baby_bottom.png"),
+                            image: AssetImage(
+                                "assets/images/baby_bottom.png"),
+                          ),
                         ),
-                      ),
-                    ),),
-                ],
+                      ),),
+                  ],
+                ),
               ),
-            ),
 
 
 
 
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -350,7 +352,7 @@ class _KidsCategoriesState extends State<KidsCategories> {
 
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       elevation: 0,
       leading: IconButton(icon:Icon(Icons.arrow_back,color: Colors.black,),
         onPressed: ()=> Navigator.pop(context),
